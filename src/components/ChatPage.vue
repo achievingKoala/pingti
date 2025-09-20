@@ -55,7 +55,7 @@ const checkDailyLimit = () => {
   const today = new Date().toDateString()
   const key = `usage_${userIP.value}_${today}`
   const count = parseInt(localStorage.getItem(key) || '0')
-  return count < 300
+  return count < 100
 }
 
 const incrementUsage = () => {
@@ -69,7 +69,7 @@ const getRemainingCount = () => {
   const today = new Date().toDateString()
   const key = `usage_${userIP.value}_${today}`
   const count = parseInt(localStorage.getItem(key) || '0')
-  return 300 - count
+  return 100 - count
 }
 
 const addMessage = (content, type, options = null) => {
@@ -102,7 +102,7 @@ onMounted(async () => {
 
 const sendMessageToAPI = async (message) => {
   if (!checkDailyLimit()) {
-    addMessage('今日使用次数已达上限（300次），请明天再来', 'assistant')
+    addMessage('今日使用次数已达上限（100次），请明天再来', 'assistant')
     return
   }
   
