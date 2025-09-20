@@ -94,7 +94,7 @@ const selectOption = (option) => {
 
 onMounted(async () => {
   userIP.value = await getUserIP()
-  addMessage('你想背哪首诗呢？', 'assistant', ['李白的诗', '春望', '杜甫的诗', '随便'])
+  addMessage('输入商品、品牌，输出平替', 'assistant', ['沙发', '电脑', '耳机', '星巴克'])
 })
 
 const sendMessageToAPI = async (message) => {
