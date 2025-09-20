@@ -87,9 +87,9 @@ const addMessage = (content, type, options = null) => {
 
 const selectOption = (option) => {
   // 隐藏选项按钮
-  messages.value.forEach(msg => {
-    if (msg.showOptions) msg.showOptions = false
-  })
+  // messages.value.forEach(msg => {
+  //   if (msg.showOptions) msg.showOptions = false
+  // })
   // 发送选择的选项
   addMessage(option, 'user')
   sendMessageToAPI(option)
@@ -164,34 +164,35 @@ const sendMessage = async () => {
   height: 90vh;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #d4af37;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  padding: 16px;
-  background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%);
-  color: #d4af37;
+  padding: 20px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
   text-align: center;
-  border-bottom: 1px solid #d4af37;
+  border-radius: 16px 16px 0 0;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 20px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .messages {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  padding: 20px;
   background: transparent;
 }
 
 .message {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
@@ -205,93 +206,124 @@ const sendMessage = async () => {
 }
 
 .content {
-  max-width: min(80%, 640px);
-  padding: 8px 12px;
-  border-radius: 12px;
+  max-width: min(75%, 600px);
+  padding: 12px 16px;
+  border-radius: 18px;
   word-wrap: break-word;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .user .content {
-  background: linear-gradient(135deg, #c8102e 0%, #a00d26 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   color: white;
-  box-shadow: 0 2px 4px rgba(200, 16, 46, 0.2);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .assistant .content {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #d4af37;
-  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.1);
+  background: white;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .input-area {
   display: flex;
-  padding: 16px;
-  border-top: 1px solid #d4af37;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  gap: 12px;
+  background: white;
+  border-radius: 0 0 16px 16px;
+  border-top: 1px solid #e5e7eb;
 }
 
 .input-area input {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #d4af37;
-  border-radius: 4px;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 24px;
   outline: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: #f9fafb;
+  font-size: 15px;
+  transition: all 0.2s;
 }
 
 .input-area input:focus {
-  border-color: #2c5530;
-  box-shadow: 0 0 0 2px rgba(44, 85, 48, 0.1);
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .input-area button {
-  padding: 8px 16px;
-  background: linear-gradient(135deg, #2c5530 0%, #1a3d1f 100%);
-  color: #d4af37;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 24px;
   cursor: pointer;
   font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .input-area button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #1a3d1f 0%, #0f2912 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .input-area button:disabled {
-  background: #ccc;
-  color: #666;
+  background: #9ca3af;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .options {
-  margin-top: 8px;
+  margin-top: 12px;
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
 .option-btn {
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #d4af37;
-  border-radius: 16px;
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s;
-  color: #2c5530;
+  color: #374151;
+  font-weight: 500;
 }
 
 .option-btn:hover {
-  background: #d4af37;
+  border-color: #3b82f6;
+  background: #3b82f6;
   color: white;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.2);
 }
 
 @media (max-width: 480px) {
   .content {
-    max-width: 90%;
+    max-width: 85%;
+  }
+  
+  .header {
+    padding: 16px;
+  }
+  
+  .header h1 {
+    font-size: 20px;
+  }
+  
+  .messages {
+    padding: 16px;
+  }
+  
+  .input-area {
+    padding: 16px;
   }
 }
 </style>
